@@ -69,7 +69,7 @@ async def async_setup_entry(
                             name=register_name.replace('_', ' '),
                             slave=slave,
                             native_unit_of_measurement=registerInfo.unit,
-                            mode=NumberMode.SLIDER if config_entry.options[CONF_USE_SLIDERS] else NumberMode.BOX,
+                            mode=NumberMode.SLIDER if config_entry.options.get(CONF_USE_SLIDERS, False) else NumberMode.BOX,
                             native_min_value=determine_min_value(registerInfo.unit, config_entry.options, registerInfo.entityType.powerType, registerInfo.entityType.negative),
                             native_max_value=determine_max_value(registerInfo.unit, config_entry.options, registerInfo.entityType.powerType),
                             entity_category=EntityCategory.CONFIG,
